@@ -29,13 +29,16 @@ console.log(`COUNTRY:${y.name} CAPITAL:${y.capital} FLAG:${y.flag}`);
 const totalPopulation=responseJSON.reduce((acc,cur)=> {return acc+cur.population},0);
 console.log(`TOTAL POPULATION :${totalPopulation}`);
 
-  responseJSON.filter((x)=>{
-  for(i=0;i<x.currencies.length;i++){
-       if(x.currencies[i].name==="United States Dollar"){
-            console.log(`${x.name}`);
+   var obj=responseJSON.filter((x)=>{
+  for(let i in x.currencies){
+       if(x.currencies[i].code=="USD"){
+            //console.log(`${x.name}`);
+            return true;
     
           }
-        }         });
+        }         }).map((x)=>{
+  console.log(`${x.name}`);
+});
 
 
 }
